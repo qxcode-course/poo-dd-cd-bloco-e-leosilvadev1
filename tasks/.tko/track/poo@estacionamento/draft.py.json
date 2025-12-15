@@ -1,0 +1,24 @@
+{
+    "patches": [
+        {
+            "label": "2025-12-15_02-04-31",
+            "content": "@@ -1,961 +0,0 @@\n-from abc import ABC, abstractmethod%0A%0Aclass Veiculo(ABC):%0A    def __init__(self, id: str, hora_entrada: int, tipo : str):%0A        self.id = id%0A        self.hora_entrada: int = hora_entrada%0A        self.tipo = tipo%0A%0Aclass Bike(Veiculo):%0A    def __init__(self, id : str):%0A        super().__init__(id, 0, %22Bike%22)%0A%0Aclass Moto(Veiculo):%0A    def __init__(self, id : str):%0A        super().__init__(id, 0, %22Moto%22)%0A%0Aclass Carro(Veiculo):%0A    def __init__(self, id : str):%0A        super().__init__(id, 0, %22Carro%22)%0A%0Aclass Estacionamento:%0A    def __init__(self):%0A        self.veiculos:list%5BVeiculo%5D%0A%0Adef main():%0A    estacionamento = Estacionamento()%0A    while True:%0A        line = input()%0A        print(%22$%22 + line)%0A        args = line.split(%22 %22)%0A%0A        if args%5B0%5D == %22end%22:%0A            break%0A        elif args%5B0%5D == %22estacionar%22:%0A            tipo = args%5B1%5D.lower()%0A            id = args%5B2%5D%0A%0A        elif args%5B0%5D == %22show%22:%0A            print(estacionamento)%0Amain()%0A        \n",
+            "lines": "0"
+        },
+        {
+            "label": "2025-12-15_02-46-52",
+            "content": "@@ -877,313 +877,8 @@\n 2%5D%0A%0A\n-        elif args%5B0%5D == %22bike%22:%0A%0A        elif args%5B0%5D == %22moto%22:%0A%0A        elif args%5B0%5D == %22carro%22:%0A%0A        elif args%5B0%5D == %22pagar%22:%0A%0A        elif args%5B0%5D == %22sair%22: %0A            id = args%0A%0A        elif args%5B0%5D == %22tempo%22:%0A            tempo = float(args%5B1%5D)%0A            estacionamento.passarTempo(tempo)%0A%0A\n     \n",
+            "lines": "41"
+        },
+        {
+            "label": "2025-12-15_02-50-18",
+            "content": "@@ -909,517 +909,108 @@\n e%22:%0A\n-            res = estacionamento.estacionar(Bike(id))%0A            if res is not None:%0A                print(res)%0A%0A        elif args%5B0%5D == %22moto%22:%0A            res = estacionamento.estacionar(Moto(id))%0A            if res is not None:%0A                print(res)%0A%0A        elif args%5B0%5D == %22carro%22:%0A            res = estacionamento.estacionar(Carro(id))%0A            if res is not None:%0A                print(res)%0A%0A        elif args%5B0%5D == %22pagar%22:%0A            id = args%5B1%5D%0A            print(estacionamento.pagar(id))\n+%0A        elif args%5B0%5D == %22moto%22:%0A%0A        elif args%5B0%5D == %22carro%22:%0A%0A        elif args%5B0%5D == %22pagar%22:\n %0A%0A  \n@@ -1065,54 +1065,8 @@\n args\n-%7B1%7D%0A            print(estacionamento.sair(id))\n %0A%0A  \n",
+            "lines": "56"
+        },
+        {
+            "label": "2025-12-15_02-54-49",
+            "content": "from abc import ABC, abstractmethod\n\nclass Veiculo(ABC):\n    def __init__(self, id: str, hora_entrada: int, tipo : str):\n        self.id = id\n        self.hora_entrada: int = hora_entrada\n        self.tipo = tipo\n\nclass Bike(Veiculo):\n    def __init__(self, id : str):\n        super().__init__(id, 0, \"Bike\")\n\nclass Moto(Veiculo):\n    def __init__(self, id : str):\n        super().__init__(id, 0, \"Moto\")\n\nclass Carro(Veiculo):\n    def __init__(self, id : str):\n        super().__init__(id, 0, \"Carro\")\n\nclass Estacionamento:\n    def __init__(self):\n        self.veiculos:list[Veiculo]\n\ndef main():\n    estacionamento = Estacionamento()\n    while True:\n        line = input()\n        print(\"$\" + line)\n        args = line.split(\" \")\n\n        if args[0] == \"end\":\n            break\n        elif args[0] == \"estacionar\":\n            tipo = args[1].lower()\n            id = args[2]\n\n        elif args[0] == \"bike\":\n            res = estacionamento.estacionar(Bike(id))\n            if res is not None:\n                print(res)\n\n        elif args[0] == \"moto\":\n            res = estacionamento.estacionar(Moto(id))\n            if res is not None:\n                print(res)\n\n        elif args[0] == \"carro\":\n            res = estacionamento.estacionar(Carro(id))\n            if res is not None:\n                print(res)\n\n        elif args[0] == \"pagar\":\n            id = args[1]\n            print(estacionamento.pagar(id))\n\n        elif args[0] == \"sair\": \n            id = args{1}\n            print(estacionamento.sair(id))\n\n        elif args[0] == \"tempo\":\n            tempo = float(args[1])\n            estacionamento.passarTempo(tempo)\n\n        elif args[0] == \"show\":\n            print(estacionamento)\nmain()\n        ",
+            "lines": "68"
+        }
+    ]
+}
